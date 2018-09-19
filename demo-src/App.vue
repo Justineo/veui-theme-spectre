@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav id="main-nav">
-      <h1><a href="https://github.com/ecomfe/veui">VEUI theme Spectre</a><icon name="brands/github" scale="6"></icon></h1>
+      <h1><a href="https://github.com/Justineo/veui-theme-spectre">VEUI theme Spectre</a><icon name="brands/github" scale="6"></icon></h1>
       <ul>
         <li v-for="(route, index) in routes" :key="index">
           <router-link :to='route' :class="{ disabled: route.disabled }">{{ route.name }}</router-link>
