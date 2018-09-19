@@ -1,0 +1,123 @@
+@import "../lib.less";
+
+.veui-dialog {
+  @transition-offset: -@unit-8;
+  display: none;
+
+  &-box {
+    .fixed(0);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: @layout-spacing;
+
+    &:not(&-mask) {
+      pointer-events: none;
+    }
+  }
+
+  &-draggable {
+    cursor: all-scroll;
+  }
+
+  &-content {
+    .shadow-variant(.2rem);
+    background: @bg-color-light;
+    border-radius: @border-radius;
+    display: flex;
+    flex-direction: column;
+    max-height: 75vh;
+    max-width: @control-width-md;
+    outline: none;
+    padding: 0 @unit-4;
+    pointer-events: auto;
+    position: relative;
+    transition: transform @veui-transition-duration;
+    transform-origin: 50% 50%;
+    width: 100%;
+
+    [ui~="sm"] & {
+      max-width: @control-width-sm;
+      padding: 0 @unit-2;
+    }
+
+    [ui~="lg"] & {
+      max-width: @control-width-lg;
+
+      .veui-dialog-box-mask& {
+        box-shadow: none;
+      }
+    }
+
+    [ui~="fullheight"] & {
+      max-height: 100vh;
+    }
+
+    &-head {
+      color: @dark-color;
+      padding: @unit-4;
+    }
+
+    &-head-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0;
+
+      .veui-icon {
+        vertical-align: -.1rem;
+      }
+    }
+
+    &-head-close {
+      .absolute(@unit-4, @unit-8, _, _);
+      .size(@unit-4);
+      align-items: center;
+      background: none;
+      border: none;
+      border-radius: @border-radius;
+      cursor: pointer;
+      display: flex;
+      outline: none;
+      padding: 0;
+
+      &.focus-visible {
+        .control-shadow();
+        .control-transition();
+      }
+    }
+
+    &-body {
+      overflow-y: auto;
+      padding: @unit-4;
+      position: relative;
+    }
+
+    &-foot {
+      padding: @unit-4;
+      text-align: right;
+    }
+
+    &-foot .veui-button {
+      margin-right: @layout-spacing;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-box-mask {
+    .absolute(0);
+    background: fadeout(@bg-color, 25%);
+    cursor: default;
+
+    &[ui~="lg"] {
+      background: @bg-color-light;
+    }
+  }
+
+  .veui-overlay-enter &-content,
+  .veui-overlay-leave-to &-content {
+    transform: translateY(@transition-offset);
+  }
+}

@@ -1,0 +1,32 @@
+@import "../lib.less";
+
+.veui-sorter {
+  .control-transition();
+  cursor: pointer;
+  margin-left: @control-padding-x;
+  vertical-align: middle;
+
+  &-icon {
+    &-asc {
+      display: none;
+    }
+  }
+
+  &-unordered {
+    opacity: .3;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  &-asc,
+  &-desc {
+    opacity: 1;
+  }
+
+  &-asc {
+    transform: rotateZ(180deg);
+  }
+}
+

@@ -1,5 +1,5 @@
 {
-  "name": "manual-dedicated",
+  "name": "veui-theme-spectre",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,17 +7,28 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {
-    "vue": "^2.5.17",
-    "vue-router": "^3.0.1"
-  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
     "@vue/cli-plugin-eslint": "^3.0.1",
     "@vue/cli-service": "^3.0.1",
     "@vue/eslint-config-standard": "^3.0.1",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-veui": "^1.0.0-alpha.17",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0",
+    "veui": "^1.0.0-alpha.17",
+    "veui-loader": "^1.0.0-alpha.17",
+    "vue": "^2.5.17",
+    "vue-cli-plugin-webpack-bundle-analyzer": "^1.2.0",
+    "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17"
+  },
+  "dependencies": {
+    "focus-visible": "^4.1.5",
+    "less-plugin-est": "^3.0.0",
+    "vue-awesome": "^3.1.2",
+    "vue-awesome-material-icons": "^1.0.0"
   }
 }

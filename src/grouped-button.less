@@ -1,0 +1,22 @@
+@import "./lib.less";
+
+._veui-grouped-button {
+  &.veui-button-selected {
+    background: @primary-color;
+    border-color: @primary-color-dark;
+    color: @light-color;
+
+    &.focus-visible,
+    &:hover {
+      background: darken(@primary-color-dark, 2%);
+      border-color: darken(@primary-color-dark, 5%);
+      color: @light-color;
+    }
+
+    &:active {
+      background: darken(@primary-color-dark, 4%);
+      border-color: darken(@primary-color-dark, 7%);
+      color: @light-color;
+    }
+  }
+}

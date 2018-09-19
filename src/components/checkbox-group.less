@@ -1,0 +1,24 @@
+@import "../lib.less";
+
+.veui-checkbox-group {
+  .clearfix();
+
+  .veui-checkbox {
+    clear: left;
+    float: left;
+  }
+
+  .veui-checkbox + .veui-checkbox {
+    margin-bottom: @unit-1;
+  }
+
+  &[ui~="inline"] .veui-checkbox {
+    display: inline-flex;
+    float: none;
+    margin-right: @unit-1;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

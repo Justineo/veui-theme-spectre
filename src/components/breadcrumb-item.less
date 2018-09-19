@@ -1,0 +1,18 @@
+@import "../lib.less";
+
+.veui-breadcrumb-item {
+  color: @gray-color-dark;
+  display: inline-block;
+  margin: 0;
+  padding: @unit-1 0;
+
+  &:not(:last-child) {
+    a {
+      color: @gray-color-dark;
+    }
+  }
+
+  &-current {
+    color: @primary-color;
+  }
+}

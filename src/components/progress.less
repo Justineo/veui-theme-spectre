@@ -1,0 +1,119 @@
+@import "../lib.less";
+
+.veui-progress {
+  position: relative;
+
+  &-bar {
+    @desc-width: 4rem;
+    .clearfix();
+    position: relative;
+    width: 100%;
+
+    .veui-progress-rail {
+      .absolute(50%, _, _);
+      .size(100%, @unit-1);
+      background: @bg-color-dark;
+      border-radius: @border-radius;
+      overflow: hidden;
+      transform: translateY(-50%);
+    }
+
+    &.veui-progress-has-desc {
+      .veui-progress-rail {
+        .size(~"calc(100% - @{desc-width})", @unit-1);
+      }
+    }
+
+    .veui-progress-meter {
+      .control-transition();
+      .size(100%);
+      margin-left: -100%;
+      background: @primary-color;
+      border-radius: @border-radius;
+    }
+
+    .veui-progress-desc {
+      float: right;
+      margin-left: @layout-spacing;
+      width: @desc-width;
+    }
+  }
+
+  &-indeterminate&-bar &-meter {
+    animation: progress-indeterminate 1.5s linear infinite;
+    margin-left: 0;
+    width: 50%;
+  }
+
+  &-circular {
+    display: inline-block;
+    height: auto;
+
+    .veui-progress-circle {
+      display: block;
+      transform: rotate(-90deg);
+    }
+
+    .veui-progress-rail {
+      stroke: @bg-color-dark;
+    }
+
+    .veui-progress-meter {
+      stroke: @primary-color;
+      transition: stroke-dashoffset @veui-transition-duration;
+    }
+  }
+
+  &[ui~="tiny"] &-desc-text {
+    display: none;
+  }
+
+  &[ui~="tiny"] .veui-icon {
+    font-size: 20px;
+  }
+
+  &-circular &-desc {
+    .absolute(0);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    .veui-icon + .veui-progress-desc-text {
+      margin-left: @layout-spacing;
+    }
+  }
+
+  &-status {
+    &-complete {
+      color: @veui-text-color-normal;
+    }
+
+    &-success {
+      color: @success-color;
+
+      .veui-progress-meter {
+        background-color: @success-color;
+        stroke: @success-color;
+      }
+    }
+
+    &-alert {
+      color: @veui-alert-color;
+
+      .veui-progress-meter {
+        background-color: @veui-alert-color;
+        stroke: @veui-alert-color;
+      }
+    }
+  }
+}
+
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-200%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
+}

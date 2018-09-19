@@ -1,0 +1,60 @@
+@import "../lib.less";
+@import (reference) "../dropdown.less";
+
+.veui-option-group {
+  display: flex;
+  flex-direction: column;
+
+  &-label {
+    display: flex;
+  }
+
+  &-label:not(&-button) {
+    align-items: center;
+    display: flex;
+    line-height: @unit-8;
+
+    &::after {
+      background-color: @border-color;
+      content: "";
+      display: block;
+      flex-grow: 1;
+      height: @border-width;
+    }
+
+    .veui-option-label {
+      color: @gray-color;
+      font-size: @font-size-sm;
+      padding: 0 @unit-2;
+    }
+  }
+
+  &-button {
+    &:extend(._veui-dropdown-option all);
+  }
+
+  &-unlabelled {
+    margin-top: @unit-4;
+    position: relative;
+
+    &::before {
+      .absolute(-@unit-2, 0, _);
+      background-color: @border-color;
+      content: "";
+      height: @border-width;
+    }
+
+    &:first-child {
+      margin-top: 0;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  &-box &-options {
+    &:extend(._veui-dropdown-overlay all);
+    margin: -1px 5px;
+  }
+}

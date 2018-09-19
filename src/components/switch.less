@@ -1,0 +1,45 @@
+@import "../lib.less";
+@import (reference) "../utilities/checker.less";
+
+.veui-switch {
+  &:extend(._checker all);
+
+  &-switcher {
+    &:extend(._checker-box all);
+    background: @gray-color-light;
+    background-clip: padding-box;
+    border-radius: @unit-2 + @border-width;
+    height: @unit-4 + @border-width * 2;
+    width: @unit-8;
+
+    &::before {
+      .control-transition();
+      background: @bg-color-light;
+      border-radius: 50%;
+      content: "";
+      display: block;
+      height: @unit-4;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: @unit-4;
+    }
+
+    input:checked + &::before {
+      left: 14px;
+    }
+
+    input:active + &::before {
+      background: @bg-color;
+    }
+
+    input:disabled + &::before {
+      background: @bg-color-light;
+    }
+
+    input.focus-visible + & {
+      .control-shadow();
+      border-color: @primary-color;
+    }
+  }
+}

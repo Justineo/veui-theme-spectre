@@ -1,0 +1,180 @@
+@import "../lib.less";
+@import (reference) "../utilities/loading.less";
+
+// Buttons
+.veui-button {
+  .control-transition();
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  background: @bg-color-light;
+  border: @border-width solid @primary-color;
+  border-radius: @border-radius;
+  color: @primary-color;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: @font-size;
+  height: @control-size;
+  line-height: @line-height;
+  outline: none;
+  padding: @control-padding-y @control-padding-x;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &.focus-visible {
+    .control-shadow();
+  }
+
+  &.focus-visible,
+  &:hover {
+    background: @secondary-color;
+    border-color: @primary-color-dark;
+    text-decoration: none;
+  }
+
+  &:active {
+    background: @primary-color-dark;
+    border-color: darken(@primary-color-dark, 5%);
+    color: @light-color;
+    text-decoration: none;
+
+    &.loading {
+      &::after {
+        border-bottom-color: @light-color;
+        border-left-color: @light-color;
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  // Button Primary
+  &[ui~="primary"] {
+    background: @primary-color;
+    border-color: @primary-color-dark;
+    color: @light-color;
+
+    &.focus-visible,
+    &:hover {
+      background: darken(@primary-color-dark, 2%);
+      border-color: darken(@primary-color-dark, 5%);
+      color: @light-color;
+    }
+
+    &:active {
+      background: darken(@primary-color-dark, 4%);
+      border-color: darken(@primary-color-dark, 7%);
+      color: @light-color;
+    }
+  }
+
+  // Button Colors
+  &[ui~="success"] {
+    .button-variant(@success-color);
+  }
+
+  &[ui~="error"] {
+    .button-variant(@error-color);
+  }
+
+  // Button Link
+  &[ui~="link"] {
+    background: transparent;
+    border-color: transparent;
+    color: @link-color;
+
+    &.focus-visible,
+    &:hover,
+    &:active,
+    &.active {
+      color: @link-color-dark;
+    }
+  }
+
+  // Button Sizes
+  &[ui~="sm"] {
+    font-size: @font-size-sm;
+    height: @control-size-sm;
+    padding: @control-padding-y-sm @control-padding-x-sm;
+  }
+
+  &[ui~="lg"] {
+    font-size: @font-size-lg;
+    height: @control-size-lg;
+    padding: @control-padding-y-lg @control-padding-x-lg;
+  }
+
+  // Button Block
+  &[ui~="block"] {
+    display: block;
+    width: 100%;
+  }
+
+  // Button Action
+  &[ui~="action"] {
+    width: @control-size;
+    padding-left: 0;
+    padding-right: 0;
+
+    &[ui~="sm"] {
+      width: @control-size-sm;
+    }
+
+    &[ui~="lg"] {
+      width: @control-size-lg;
+    }
+  }
+
+  // Button Clear
+  &[ui~="clear"] {
+    background: transparent;
+    border: 0;
+    color: currentColor;
+    height: @unit-4;
+    line-height: @unit-4;
+    margin-left: @unit-1;
+    margin-right: -2px;
+    opacity: 1;
+    padding: 0;
+    text-decoration: none;
+    width: @unit-4;
+
+    &:hover {
+      opacity: .95;
+    }
+
+    &::before {
+      content: "\2715";
+    }
+  }
+
+  &-loading {
+    &:extend(._loading all);
+
+    &:active::after {
+      border-bottom-color: @light-color;
+      border-left-color: @light-color;
+    }
+
+    &[ui~="primary"],
+    &[ui~="success"],
+    &[ui~="error"] {
+      &::after {
+        border-bottom-color: @light-color;
+        border-left-color: @light-color;
+      }
+    }
+
+    &-text {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+}

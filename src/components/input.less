@@ -1,0 +1,119 @@
+@import "../lib.less";
+@import (reference) "../input.less";
+
+.veui-input {
+  .control-transition();
+  align-items: stretch;
+  background: @bg-color-light;
+  background-image: none;
+  border: @border-width solid @border-color-dark;
+  border-radius: @border-radius;
+  color: @body-font-color;
+  display: flex;
+  font-size: @font-size;
+  height: @control-size;
+  line-height: ~"calc(@{line-height} - 2px)";
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+
+  &-main {
+    flex: 1 0;
+    cursor: text;
+    padding: @control-padding-y @control-padding-x;
+    position: relative;
+  }
+
+  &-before,
+  &-after {
+    flex: 0 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &-placeholder {
+    .control-transition();
+    opacity: .5;
+    position: absolute;
+  }
+
+  &-input {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+
+  &-autofill {
+    background-color: #faffbd;
+  }
+
+  &-focused {
+    .control-shadow();
+    border-color: @primary-color;
+  }
+
+  &.veui-readonly {
+    background-color: @bg-color;
+  }
+
+  &.veui-disabled {
+    background-color: @bg-color-dark;
+    opacity: .5;
+  }
+
+  &.veui-disabled,
+  &.veui-disabled &-main,
+  &.veui-disabled &-input {
+    cursor: not-allowed;
+  }
+
+  &-clear {
+    align-items: center;
+    display: flex;
+    margin-right: @layout-spacing;
+
+    &-button {
+      .size(@unit-4);
+      align-items: center;
+      background: none;
+      border: none;
+      border-radius: @border-radius;
+      cursor: pointer;
+      display: flex;
+      outline: none;
+      padding: 0;
+
+      &.focus-visible {
+        .control-shadow();
+        .control-transition();
+      }
+    }
+  }
+
+  // Input sizes
+  &[ui~="sm"] {
+    font-size: @font-size-sm;
+    height: @control-size-sm;
+
+    .veui-input-main {
+      padding: @control-padding-y-sm @control-padding-x-sm;
+    }
+  }
+
+  &[ui~="lg"] {
+    font-size: @font-size-lg;
+    height: @control-size-lg;
+
+    .veui-input-main {
+      padding: @control-padding-y-lg @control-padding-x-lg;
+    }
+  }
+
+  &[ui~="inline"] {
+    display: inline-flex;
+    vertical-align: middle;
+    width: auto;
+  }
+}

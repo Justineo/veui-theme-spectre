@@ -1,0 +1,89 @@
+@import "../lib.less";
+@import (reference) "../input.less";
+
+.veui-number-input {
+  input {
+    ime-mode: disabled;
+  }
+
+  &-controls {
+    width: 28px;
+    height: 100%;
+  }
+
+  .veui-button&-step-up,
+  .veui-button&-step-down {
+    display: block;
+    position: relative;
+    .size(100%, 50%);
+    padding: 0;
+    border-width: 0 0 0 1px;
+
+    .veui-icon {
+      .veui-position-center();
+      margin-top: 0;
+    }
+
+    &.veui-disabled,
+    &.veui-readonly {
+      &,
+      &:hover {
+        border-color: @veui-gray-color-5;
+      }
+    }
+  }
+
+  &-focused.veui-input {
+    border-color: @veui-gray-color-3;
+  }
+
+  .veui-button&-step-up {
+    &:hover,
+    &:active {
+      & + .veui-number-input-step-down:not(.veui-disabled):not(.veui-readonly)::after {
+        border-bottom-color: @veui-gray-color-5;
+      }
+    }
+  }
+
+  .veui-button&-step-down {
+    bottom: 0;
+
+    &::after {
+      content: "";
+      .absolute(0, 0, _);
+      border-bottom: 1px solid transparent;
+    }
+
+    &:not(.veui-disabled):not(.veui-readonly) {
+      &:hover,
+      &:active {
+        &::after {
+          border-bottom-color: @veui-gray-color-5;
+        }
+      }
+    }
+  }
+
+  &.veui-input-invalid:not(.veui-disabled):not(.veui-readonly) {
+    &:extend(._veui-input-invalid all);
+  }
+
+  &[ui~="tiny"] {
+    .veui-number-input-step-up,
+    .veui-number-input-step-down {
+      .veui-icon {
+        transform: translate(50%, 50%) scale(.8);
+      }
+    }
+  }
+
+  &[ui~="micro"] {
+    .veui-number-input-step-up,
+    .veui-number-input-step-down {
+      .veui-icon {
+        transform: translate(50%, 50%) scale(.6);
+      }
+    }
+  }
+}

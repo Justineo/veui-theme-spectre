@@ -1,0 +1,142 @@
+@import "../lib.less";
+@import (reference) "../input.less";
+
+.veui-textarea {
+  .control-transition();
+  .clearfix();
+  background-color: @bg-color;
+  background-image: none;
+  border: @border-width solid @border-color-dark;
+  border-radius: @border-radius;
+  color: @body-font-color;
+  font-size: @font-size;
+  line-height: @line-height;
+  max-width: 100%;
+  min-height: 150px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &-focused {
+    .control-shadow();
+    border-color: @primary-color;
+  }
+
+  &-input,
+  &-measurer {
+    font: inherit;
+  }
+
+  &-input {
+    appearance: none;
+    background: @bg-color-light;
+    border: none;
+    position: relative;
+    float: right;
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    max-height: inherit;
+    outline: none;
+    padding: @control-padding-y @control-padding-x;
+    z-index: 1;
+    resize: none;
+
+    &::placeholder {
+      opacity: .5;
+    }
+  }
+
+  &-line-numbered &-input {
+    box-shadow: inset 1px 0 0 @border-color;
+  }
+
+  &-rows {
+    min-height: auto;
+  }
+
+  &-rows &-input {
+    height: auto;
+  }
+
+  &-measurer + &-input {
+    max-width: ~"calc(100% - @{unit-8})";
+  }
+
+  &-measurer {
+    .absolute(0, 0, _);
+    .padding(@control-padding-y, _);
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: @veui-text-color-weak;
+
+    &-line {
+      overflow: hidden;
+
+      &-number {
+        float: left;
+        min-width: @unit-8;
+        text-align: center;
+      }
+
+      &-content {
+        .padding(_, @control-padding-x);
+        overflow: hidden;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &[ui~="sm"] {
+    font-size: @font-size-sm;
+    line-height: @control-size-sm;
+
+    .veui-textarea {
+      &-input {
+        padding: @control-padding-y-sm @control-padding-x-sm;
+      }
+
+      &-measurer {
+        .padding(@control-padding-y-sm, _);
+
+        &-line-content {
+          .padding(_, @control-padding-x-sm);
+        }
+      }
+    }
+  }
+
+  &[ui~="lg"] {
+    font-size: @font-size-lg;
+    line-height: @control-size-lg;
+
+    .veui-textarea {
+      &-input {
+        padding: @control-padding-y-lg @control-padding-x-lg;
+      }
+
+      &-measurer {
+        .padding(@control-padding-y-lg, _);
+
+        &-line-content {
+          .padding(_, @control-padding-x-lg);
+        }
+      }
+    }
+  }
+
+  &.veui-readonly &-input {
+    background-color: @bg-color;
+  }
+
+  &.veui-disabled &-input {
+    background-color: @bg-color-dark;
+    opacity: .5;
+  }
+
+  &.veui-disabled,
+  &.veui-disabled &-input {
+    cursor: not-allowed;
+  }
+}

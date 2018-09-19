@@ -1,0 +1,37 @@
+@import "../lib.less";
+@import (reference) "../dropdown.less";
+@import (reference) "./button-group.less";
+
+.veui-dropdown {
+  &:extend(._veui-dropdown-button all);
+
+  .veui-button {
+    &.focus-visible,
+    &:hover,
+    &:active,
+    &.active {
+      z-index: @zindex-0;
+    }
+  }
+
+  &-split &-command {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  &-split &-button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin-left: -@border-width;
+    flex-grow: 0;
+  }
+
+  &-options {
+    &:extend(._veui-dropdown-overlay all);
+    overflow-y: auto;
+  }
+
+  &-option {
+    &:extend(._veui-dropdown-option all);
+  }
+}

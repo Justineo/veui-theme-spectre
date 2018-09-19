@@ -1,0 +1,27 @@
+@import "../lib.less";
+@import (reference) "../utilities/checker.less";
+
+.veui-radio {
+  &:extend(._checker all);
+  &:extend(._box-checker all);
+
+  &-box {
+    &:extend(._checker-box all);
+    border-radius: 50%;
+
+    input:checked + & {
+      &::before {
+        background: @bg-color-light;
+        border-radius: 50%;
+        content: "";
+        height: 4px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 4px;
+      }
+    }
+  }
+}
+

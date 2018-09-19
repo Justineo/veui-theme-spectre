@@ -1,0 +1,17 @@
+@import "../lib.less";
+
+.veui-breadcrumb {
+  list-style: none;
+  margin: @unit-1 0;
+  padding: @unit-1 0;
+
+  :not(:last-child) > &-separator:empty::before {
+    .margin(_, @layout-spacing);
+    color: @gray-color-light;
+    content: "/";
+  }
+
+  .veui-icon {
+    vertical-align: -.1rem;
+  }
+}

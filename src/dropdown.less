@@ -1,0 +1,85 @@
+@import "./lib.less";
+
+._veui-dropdown-overlay {
+  .control-transition();
+  .shadow-variant(.05rem);
+  background: @bg-color-light;
+  border-radius: @border-radius;
+  list-style: none;
+  margin: @unit-1 0;
+  min-width: @control-width-xs;
+  outline: none;
+  padding: @unit-2;
+  transform-origin: 50% 0;
+
+  .veui-overlay-enter &,
+  .veui-overlay-leave-to & {
+    transform: scaleY(0);
+  }
+
+  .tether-element-attached-bottom.veui-overlay-enter-active &,
+  .tether-element-attached-bottom.veui-overlay-leave-active & {
+    transform-origin: 50% 100%;
+  }
+}
+
+._veui-dropdown-button {
+  display: inline-flex;
+
+  &-icon {
+    transform: rotateZ(90deg);
+
+    &:not(:first-child) {
+      margin-left: @control-padding-x;
+    }
+  }
+
+  &-expanded &-icon {
+    transform: rotate(270deg);
+  }
+}
+
+._veui-dropdown-option {
+  .control-transition();
+  .ellipsis();
+  align-items: center;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  border-radius: @border-radius;
+  color: inherit;
+  cursor: pointer;
+  justify-content: space-between;
+  outline: none;
+  padding: @unit-1 @unit-2;
+  text-align: left;
+  text-decoration: none;
+  user-select: none;
+  width: 100%;
+
+  & + & {
+    margin-top: @unit-1;
+  }
+
+  &-selected,
+  &.focus-visible,
+  &:hover {
+    background: @secondary-color;
+    color: @primary-color;
+  }
+
+  &:active {
+    background: @secondary-color;
+    color: @primary-color;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    opacity: .5;
+    pointer-events: none;
+  }
+
+  &.focus-visible {
+    .control-shadow(@primary-color);
+  }
+}

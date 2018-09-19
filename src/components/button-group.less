@@ -1,0 +1,50 @@
+@import "../lib.less";
+
+// Button groups
+.veui-button-group {
+  display: inline-flex;
+
+  .veui-button {
+    flex: 1 0 auto;
+
+    &:first-child:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+      margin-left: -@border-width;
+    }
+
+    &:last-child:not(:first-child) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      margin-left: -@border-width;
+    }
+
+    &.focus-visible,
+    &:hover,
+    &:active,
+    &.active {
+      z-index: @zindex-0;
+    }
+  }
+
+  &[ui~="block"] {
+    display: flex;
+
+    .btn {
+      flex: 1 0 0;
+    }
+  }
+
+  .veui-button:disabled + .veui-button:disabled {
+    border-left-color: fadeout(@primary-color, sqrt(.5) * 100%);
+  }
+
+  .veui-button:disabled + .veui-button-selected:disabled,
+  .veui-button[ui~="primary"]:disabled + .veui-button[ui~="primary"]:disabled {
+    border-left-color: fadeout(@light-color, 55%);
+  }
+}
