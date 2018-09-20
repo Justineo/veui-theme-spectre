@@ -35,6 +35,9 @@
 
 <script>
 import { CheckButtonGroup, Checkbox, Icon } from 'veui'
+import 'vue-awesome-material-icons/icons/check'
+import 'vue-awesome-material-icons/icons/close'
+import 'vue-awesome-material-icons/icons/refresh'
 
 export default {
   name: 'check-button-group-demo',
